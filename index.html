@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="cabecalho">
+    <h1>Pomodoro</h1>
+  </header>
+
+  <main class="cartao">
+
+    <!-- indica se está em modo de foco ou pausa -->
+    <p class="sessaoLabel" id="sessaoLabel">foco</p>
+
+    <!-- informa o tempo no centro da tela -->
+    <div class="tempoDisplay" id="tempoDisplay">25:00</div>
+
+    <!-- contador de ciclos completos -->
+    <p class="contagemCiclo"> ciclos: <span id="contadorCiclo">0</span></p>
+
+    <div class="controles">
+      <button id="btn-iniciar" class="btn btn-primario">Iniciar</button>
+      <button id="btn-pausar" class="btn" disabled>Pausar</button>
+      <button id="btn-reiniciar" class="btn btn-secundario">Reiniciar</button>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
