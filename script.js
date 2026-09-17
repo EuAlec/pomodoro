@@ -49,6 +49,7 @@ function encerrarSessao() {
 
 function iniciarSessao(duracao) {
   horarioFim = Date.now() + duracao;
+  tempoRestante = duracao;
   clearInterval(idIntervalo);
   idIntervalo = setInterval(atualizarTela, 250); // 250ms é suficiente para parecer fluido
   displayTempo.textContent = formatarTempo(duracao);
@@ -56,13 +57,14 @@ function iniciarSessao(duracao) {
 
 //Controles
 btnIniciar.addEventListener("click", () => {
-  iniciarSessao(modo === "foco" ? duracaoFoco : duracaoPausa);
+  iniciarSessao(tempoRestante);
   btnIniciar.disabled = true;
   btnPausar.disabled = false;
 });
 
 btnPausar.addEventListener("click", () => {
   clearInterval(idIntervalo);
+  tempoRestante = horarioFim - Date.now();
   btnIniciar.disabled = false;
   btnPausar.disabled = true;
 });
@@ -71,6 +73,7 @@ btnReiniciar.addEventListener("click", () => {
   clearInterval(idIntervalo);
   modo = "foco";
   contadorCiclos = 0;
+  tempoRestante = duracaoFoco;
   elementoContadorCiclos.textContent = 0;
   rotuloSessao.textContent = modo;
   displayTempo.textContent = formatarTempo(duracaoFoco);
